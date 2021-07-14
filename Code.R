@@ -50,6 +50,33 @@ print(newdata)
 #Use the pipe operator (%>%) to select the column: mpg, cyl, gear. Then, place the record in the increasing order of mpg values.
 mtcars %>%  select(mpg, cyl, gear) %>% arrange(mpg)
 
+# Select all the column except mpg from the mtcars dataset.
+mtcars[-1] #method 1
+mtcars[,c(2:11)] #method 2
+
+# Create a variable namely "kpg". Hint: use mutate funciton. 1 mpg = 1.609 kpg
+mtcars %>% mutate(kpg = mpg / 1.609) 
+
+# Calculate the mean, and median for the variable mpg. Hint use summarize() function.
+summarize(mtcars, Avearge_mpg = mean(mtcars$mpg), Median_mpg = median(mtcars$mpg))
+
+
+#Count the total rows, and calculate the mean and median for the variable "mpg" grouped by gear.
+
+mtcars %>% 
+  group_by(gear) %>%
+  summarise(Total_rows = n(), Avearge_mpg = mean(mtcars$mpg), Median_mpg = median(mtcars$mpg))
+
+
+
+
+
+
+
+
+
+
+
 
 
 
